@@ -54,6 +54,8 @@ npm test
 | `http://localhost:5000/api-docs` | Swagger UI (interactive) |
 | `http://localhost:5000/api-docs.json` | Raw OpenAPI 3.0 JSON (for Postman/Insomnia import) |
 
+> **Note:** `/api-docs` loads Swagger UI assets from a CDN (unpkg) instead of serving them locally. This avoids a known blank-page issue on Vercel, where serverless functions don't reliably serve `swagger-ui-dist`'s static assets.
+
 ## API Endpoints
 
 ### Authentication
