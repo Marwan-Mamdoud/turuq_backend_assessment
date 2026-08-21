@@ -34,7 +34,7 @@ app.use(
         "connect-src": ["'self'", "https://unpkg.com"],
       },
     },
-  })
+  }),
 );
 app.use(mongoSanitize());
 app.use(cors());
@@ -54,12 +54,12 @@ const swaggerOptions = {
     // TODO: Replace <your-project> with actual Vercel project name after deployment.
     servers: [
       {
-        url: `http://localhost:${process.env.PORT || 5000}`,
-        description: "Local development",
-      },
-      {
         url: "https://turuqbackendassessment.vercel.app",
         description: "Production (Vercel)",
+      },
+      {
+        url: `http://localhost:${process.env.PORT || 5000}`,
+        description: "Local development",
       },
     ],
     components: {
