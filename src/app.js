@@ -19,7 +19,22 @@ const app = express();
 
 // Security hardening: sets secure HTTP headers, strips $/.-prefixed
 // keys from user input (NoSQL injection prevention), enables CORS.
-app.use(helmet());
+// The CSP explicitly allow-lists unpkg.com because Swagger UI loads
+// its CSS/JS bundle from that CDN — helmet's default same-origin-only
+// CSP blocks cross-origin assets by design. This is a narrow,
+// deliberate exception scoped to scripts, styles, and images only.
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        ...helmet.contentSecurityPolicy.getDefaultDirectives(),
+        "script-src": ["'self'", "https://unpkg.com"],
+        "style-src": ["'self'", "https://unpkg.com", "'unsafe-inline'"],
+        "img-src": ["'self'", "data:", "https://unpkg.com"],
+      },
+    },
+  })
+);
 app.use(mongoSanitize());
 app.use(cors());
 app.use(express.json());
