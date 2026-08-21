@@ -33,12 +33,19 @@ const swaggerOptions = {
     info: {
       title: "User Data Handling API",
       version: "1.0.0",
-      description: "RESTful API for managing User Profiles with JWT-based admin authentication",
+      description:
+        "RESTful API for managing User Profiles with JWT-based admin authentication",
     },
     // TODO: Replace <your-project> with actual Vercel project name after deployment.
     servers: [
-      { url: `http://localhost:${process.env.PORT || 5000}`, description: "Local development" },
-      { url: "https://<your-project>.vercel.app", description: "Production (Vercel)" },
+      {
+        url: `http://localhost:${process.env.PORT || 5000}`,
+        description: "Local development",
+      },
+      {
+        url: "https://turuqbackendassessment.vercel.app",
+        description: "Production (Vercel)",
+      },
     ],
     components: {
       securitySchemes: {
