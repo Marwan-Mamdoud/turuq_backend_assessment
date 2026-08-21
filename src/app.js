@@ -28,9 +28,10 @@ app.use(
     contentSecurityPolicy: {
       directives: {
         ...helmet.contentSecurityPolicy.getDefaultDirectives(),
-        "script-src": ["'self'", "https://unpkg.com"],
+        "script-src": ["'self'", "https://unpkg.com", "'unsafe-inline'"],
         "style-src": ["'self'", "https://unpkg.com", "'unsafe-inline'"],
         "img-src": ["'self'", "data:", "https://unpkg.com"],
+        "connect-src": ["'self'", "https://unpkg.com"],
       },
     },
   })
